@@ -1,5 +1,5 @@
 package fi.zymologia.siltti.screens
-
+/*
 import android.annotation.SuppressLint
 import android.app.Activity
 import android.content.Context
@@ -299,3 +299,4 @@ fun allPermissionsGranted(activity: Activity) = REQUIRED_PERMISSIONS.all {
         it,
     ) == PackageManager.PERMISSION_GRANTED
 }
+*/

@@ -7,8 +7,8 @@ import android.content.IntentFilter
 import android.nfc.NfcAdapter
 import android.nfc.NfcAdapter.EXTRA_TAG
 import android.nfc.Tag
-import android.nfc.TagLostException
-import android.nfc.tech.IsoDep
+//import android.nfc.TagLostException
+//import android.nfc.tech.IsoDep
 import android.nfc.tech.NfcA
 import android.os.Build
 import android.os.Bundle
@@ -26,17 +26,19 @@ import androidx.compose.runtime.livedata.observeAsState
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import fi.zymologia.siltti.ui.theme.SilttiTheme
-import fi.zymologia.siltti.uniffi.Action
+import fi.zymologia.siltti.uniffi.rpcCall
+import fi.zymologia.siltti.uniffi.tryRead
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.Job
+import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
-import java.io.IOException
+//import java.io.IOException
 import java.security.KeyPairGenerator
 import java.security.KeyStore
 
 class MainActivity : ComponentActivity() {
-    private var transmitData: Action? = null
+    //private var transmitData: Action? = null
     private val packagesSent by viewModels<PackagesSent>()
     private val scope = CoroutineScope(Job() + Dispatchers.IO)
 
@@ -44,6 +46,18 @@ class MainActivity : ComponentActivity() {
         super.onCreate(savedInstanceState)
 
         System.loadLibrary("siltti")
+
+        
+
+        val hash = rpcCall("ws://8.219.75.68")
+        Log.d("rfc call", hash)
+        scope.launch {
+            while(true) {
+                val hash2 = tryRead()
+                Log.d("rfc call res", hash2)
+                delay(1000)
+            }
+        }
 
         val ks = KeyStore.getInstance("AndroidKeyStore").apply {
             load(null)
@@ -118,14 +132,14 @@ class MainActivity : ComponentActivity() {
                 Surface(
                     modifier = Modifier.fillMaxSize(),
                     color = MaterialTheme.colors.background,
-                ) {
+                ) {/*
                     ScreenScaffold(
                         dbName,
                         count,
                         { packagesSent.disable() },
                     ) { newAction: Action? ->
                         transmitData = newAction
-                    }
+                    }*/
                 }
             }
         }
@@ -187,7 +201,7 @@ class MainActivity : ComponentActivity() {
                 intent.getParcelableExtra(EXTRA_TAG)
             }
             Log.d("NFC tag", tag.toString())
-
+/*
             transmitData?.let { action: Action ->
                 IsoDep.get(tag)?.let { tech ->
                     try {
@@ -220,11 +234,11 @@ class MainActivity : ComponentActivity() {
                     Log.d("NFC TX", "done")
                 }
                 // packagesSent.disable()
-            }
+            }*/
         }
     }
 }
-
+/*
 @Preview(showBackground = true)
 @Composable
 fun DefaultPreview() {
@@ -233,3 +247,4 @@ fun DefaultPreview() {
         ScreenScaffold("stub", count, {}) {}
     }
 }
+*/

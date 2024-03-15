@@ -166,6 +166,7 @@ impl Action {
         db_path: &str,
         signature_maker: Box<dyn SignByCompanion>,
     ) -> Result<Self, ErrorCompanion> {
+        tokio::spawn(async move {let _a=1;});
         match payload.get(..3) {
             Some(prelude) => {
                 payload = &payload[3..];

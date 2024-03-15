@@ -11,11 +11,14 @@ hex = "0.4.3"
 parity-scale-codec = "3.6.4"
 sled = "0.34.7"
 sp-core = {version = "23.0.0", default-features = false, features = ["full_crypto"]}
-substrate_parser = { git = "https://github.com/Alzymologist/substrate-parser", default-features = false, features = ["embed-display"], rev = "632f621a595fa7161a3352c1f6a05ffcc5f2dcc8" }
+substrate_parser = { git = "https://github.com/Alzymologist/substrate-parser", default-features = false, features = ["embed-display"], rev = "be599ba0d2e12ea0b61d8ab111bf738cce545901" }
 thiserror = "1.0.35"
 
 kampela-common = {git = "https://github.com/Kalapaja/kampela-common", rev = "c43327948b591fa8a9692cb793c66da47a2f773a"}
 lt-codes = {git = "https://github.com/Alzymologist/LT-codes"}
+smoldot-light = {version = "0.15.0", default-features = false, features = ["std"]}
+tokio = { version = "1.36.0", features = ["full"] }
+#jsonrpsee = { version = "0.20.0", features = ["async-client"] }
 
 [lib]
 name = "database"

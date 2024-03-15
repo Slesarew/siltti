@@ -4,12 +4,24 @@ version = "0.1.0"
 edition = "2021"
 
 [dependencies]
-database = { path = "../database" }
-qr_reader = { path = "../qr_reader" }
-uniffi = { version = "0.24.1", features = ["cli"] }
+#frame-metadata = {version = "16.0.0", features = ["current", "decode"]}
+#hex = "0.4.3"
+jsonrpsee = {version = "0.22.2", features = ["ws-client"]}
+lazy_static = "1.4.0"
+#parity-scale-codec = {version = "3.6.9"}
+#regex = "1.5.4"
+#scale-info = {version = "2.10.0"}
+serde_json = "1.0.81"
+#sp-crypto-hashing = "0.1.0"
+#substrate_parser = {git = "https://github.com/Alzymologist/substrate-parser", rev = "65de6a4fe207a64f9857247af4e9f7509fa6de4f"}
+tokio = { version = "1", features = ["full"] }
+uniffi = { version = "0.26.1", features = ["cli"] }
 
 [build-dependencies]
-uniffi_build = { version = "0.24.1", features = ["builtin-bindgen"] }
+uniffi = { version = "0.26.1", features = ["build", "cli"] }
+
+[dev-dependencies]
+uniffi = { version = "0.26.1", features = ["bindgen-tests"] }
 
 [lib]
 crate-type = ["staticlib", "cdylib"]

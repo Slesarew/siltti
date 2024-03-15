@@ -1,5 +1,5 @@
 package fi.zymologia.siltti
-
+/*
 import android.Manifest
 import android.util.Log
 import androidx.compose.foundation.*
@@ -105,3 +105,4 @@ class Signer : SignByCompanion {
         return ke.certificate.publicKey.encoded.toUByteArray().toList()
     }
 }
+*/

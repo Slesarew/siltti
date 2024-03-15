@@ -1,5 +1,5 @@
 package fi.zymologia.siltti.components
-
+/*
 import androidx.compose.foundation.Canvas
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxWidth
@@ -73,3 +73,4 @@ fun ScanProgressBar(
         }
     }
 }
+*/
