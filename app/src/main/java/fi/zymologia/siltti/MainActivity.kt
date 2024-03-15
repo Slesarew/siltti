@@ -49,7 +49,7 @@ class MainActivity : ComponentActivity() {
 
         
 
-        val hash = rpcCall("ws://8.219.75.68")
+        val hash = rpcCall("ws://kusama.api.onfinality.io/public-ws") //"ws://8.219.75.68")
         Log.d("rfc call", hash)
         scope.launch {
             while(true) {
